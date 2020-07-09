@@ -1,0 +1,37 @@
+# https://cmake.org/documentation/
+cmake_minimum_required(VERSION 3.16) # 用来指定最低的cmake版本
+
+project(YiYan) # 设置项目的名称，设置PROJECT_NAME的值
+
+set(CMAKE_CXX_STANDARD 17) # 设置C++标准
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Qt必备，若要深入了解则查阅qt和cmake的官方文档
+set(CMAKE_AUTOMOC ON) 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_PREFIX_PATH "E:/Qt5.13.0") # 设置qt的安装路径
+
+
+find_package(Qt5 COMPONENTS Widgets Core Gui REQUIRED) # 引入Qt库
+
+set(SOURCE_FILES mainwindow.cpp main.cpp) # 当前目录下的所有源文件
+set(HEADER_FILES mainwindow.h) # 当前目录下的所有所有头文件
+set(UI_FILES mainWindow.ui) # 当前目录下的所有ui文件
+# set(RESOURCE_FILES resource.qrc) #当前目录下的所有资源文件
+# set(EXTRA_RESOURCES app.rc) # 额外的资源文件
+# 将项目文件添加到工程中去
+add_executable(${PROJECT_NAME}
+    ${SOURCE_FILES}
+    ${HEADER_FILES}
+    ${UI_FILES}
+    # ${RESOURCE_FILES}
+)
+
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Gui) # 添加Qt库
+
+
+
