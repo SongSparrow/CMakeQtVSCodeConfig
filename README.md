@@ -1,0 +1,2 @@
+# CMakeQtVSCodeConfig
+在VSCode中使用CMake编译调试Qt项目的配置文件
